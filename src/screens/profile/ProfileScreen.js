@@ -5,7 +5,7 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>Profile Screen</Text>
+        <Text style={{ fontFamily: 'Poppins-SemiBold' }}>Profile Screen</Text>
       </View>
 
     </View>

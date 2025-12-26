@@ -4,7 +4,7 @@ export default function CartScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>Cart Screen</Text>
+        <Text style={{ fontFamily: 'Poppins-SemiBold' }}>Cart Screen</Text>
       </View>
 
     </View>

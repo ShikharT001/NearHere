@@ -4,7 +4,7 @@ export default function SearchScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>Search Screen</Text>
+        <Text style={{ fontFamily: 'Poppins-SemiBold' }}>Search Screen</Text>
       </View>
 
     </View>
