@@ -9,6 +9,7 @@ export default function App() {
     'Urbanist-Medium': require('./assets/fonts/Urbanist-Medium.ttf'),
     'Urbanist-SemiBold': require('./assets/fonts/Urbanist-SemiBold.ttf'),
     'Urbanist-Bold': require('./assets/fonts/Urbanist-Bold.ttf'),
+    'Indie-Flower':require('./assets/fonts/IndieFlower-Regular.ttf')
   });
 
   if (!fontsLoaded) {

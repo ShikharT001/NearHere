@@ -3,132 +3,149 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
+  ImageBackground,
   TouchableOpacity,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  Dimensions
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+
+const { height } = Dimensions.get('window');
 
 export default function GetStartedScreen({ navigation }) {
   return (
-    <LinearGradient
-      colors={['#EAF4FF', '#FCE4EC']}
+    <ImageBackground
+      source={require('../../../assets/images/hero.jpg')} 
       style={styles.container}
+      resizeMode="cover"
     >
-      {/* Logo */}
-      <View style={styles.logoContainer}>
-        <Image
-          source={require('../../../assets/images/logo.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <Text style={styles.appName}>near{'\n'}here</Text>
-      </View>
-
-      {/* Hero Image */}
-      <Image
-        source={require('../../../assets/images/hero.png')}
-        style={styles.heroImage}
-        resizeMode="contain"
-      />
-
-      {/* Features */}
-      <View style={styles.features}>
-        <View style={styles.featureItem}>
-          <Image
-            source={require('../../../assets/icons/star.png')}
-            style={styles.icon}
+      {/* Ensures the status bar doesn't create extra gaps */}
+      <StatusBar barStyle="dark-content" transparent backgroundColor="transparent" />
+      
+      
+        
+        {/* LOGO SECTION */}
+        <View style={styles.logoSection}>
+          <Image 
+            source={require('../../../assets/images/logo.png')} 
+            style={styles.logo} 
+            resizeMode="contain"
           />
-          <Text style={styles.featureText}>4.5{'\n'}Rating</Text>
         </View>
 
-        <View style={styles.featureItem}>
-          <Image
-            source={require('../../../assets/icons/verified.png')}
-            style={styles.icon}
-          />
-          <Text style={styles.featureText}>
-            100%{'\n'}verified profiles
-          </Text>
-        </View>
-      </View>
+        {/* SPACER - flex: 1 keeps this area dynamic but fixed */}
+        <View style={styles.spacer} />
 
-      {/* Get Started Button */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Home')}
-        activeOpacity={0.85}
-      >
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
-    </LinearGradient>
+        {/* BOTTOM CONTENT AREA */}
+        <View style={styles.bottomContent}>
+            {/* STATS SECTION */}
+            <View style={styles.statsContainer}>
+              <View style={styles.statItem}>
+                <Image 
+                  source={require('../../../assets/icons/star.png')} 
+                  style={styles.statIcon} 
+                />
+                <Text style={styles.statValue}>4.5</Text>
+                <Text style={styles.statLabel}>Rating</Text>
+              </View>
+
+              <View style={styles.statItem}>
+                <Image 
+                  source={require('../../../assets/icons/verified.png')} 
+                  style={styles.statIcon} 
+                />
+                <Text style={styles.statValue}>100%</Text>
+                <Text style={styles.statLabel}>verified profiles</Text>
+              </View>
+            </View>
+
+            {/* BUTTON */}
+            <TouchableOpacity
+              style={styles.button}
+              activeOpacity={0.9}
+              onPress={() => navigation.replace('Onboarding')}
+            >
+              <Text style={styles.buttonText}>Get Started</Text>
+            </TouchableOpacity>
+        </View>
+        
+      
+    </ImageBackground>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
-    justifyContent: 'space-between',
+    height: height, // Forces the container to exactly the window height
   },
-
-  logoContainer: {
+  overlay: {
+    flex: 1,
+    paddingHorizontal: 25,
+    paddingBottom: 20, // Reduced padding to ensure it fits
+  },
+  logoSection: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
   },
-
   logo: {
-    width: 60,
-    height: 60,
-    marginBottom: 10,
+    width: 320,  // Reduced from 200 to ensure it fits on smaller screens
+    height: 320,
   },
-
-  appName: {
-    fontFamily: 'Urbanist-Bold',
-    fontSize: 36,
-    textAlign: 'center',
-    color: '#111',
-    lineHeight: 40,
+  spacer: {
+    flex: 1, 
   },
-
-  heroImage: {
-    width: '100%',
-    height: 220,
-    marginVertical: 20,
+  bottomContent: {
+    marginBottom: 20,
   },
-
-  features: {
+  statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 30,
+    marginBottom: 25,
   },
-
-  featureItem: {
+  statItem: {
     alignItems: 'center',
   },
-
-  icon: {
-    width: 28,
-    height: 28,
-    marginBottom: 6,
+  statIcon: {
+    width: 40,
+    height: 40,
+    marginBottom: 5,
+    resizeMode: 'contain',
   },
-
-  featureText: {
-    fontFamily: 'Urbanist-Medium',
-    fontSize: 14,
+  statValue: {
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#000',
+  },
+  statLabel: {
+    fontSize: 13,
+    color: '#000',
     textAlign: 'center',
-    color: '#333',
   },
-
   button: {
-    backgroundColor: '#FF6F9C',
-    borderRadius: 30,
-    paddingVertical: 16,
-    alignItems: 'center',
-    marginBottom: 30,
-  },
-
+  backgroundColor: '#FF7494',
+  borderRadius: 15, // Matches the rounded look of your screenshot
+  paddingVertical: 15,
+  alignItems: 'center',
+  
+  // WIDTH CONTROL
+  width: '80%',           // Reduces width to 80% of the screen
+  alignSelf: 'center',    // Centers the button horizontally
+  
+  borderWidth: 1,
+  borderColor: '#000',
+  
+  // Shadow / Neumorphic effect
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 1,
+  shadowRadius: 0,
+  elevation: 5,
+},
   buttonText: {
-    fontFamily: 'Urbanist-SemiBold',
-    fontSize: 18,
+    fontWeight: '500',
+    fontSize: 24, // Reduced from 32 to prevent overflow
     color: '#000',
   },
 });
