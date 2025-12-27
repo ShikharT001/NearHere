@@ -23,4 +23,10 @@ export const onboardingSteps = [
     component: 'HEIGHT',
     buttonText: 'Next',
   },
+  {
+    id: 5,
+    title: "How long have you been stealing hearts?",
+    component: 'DATE',
+    buttonText: 'Next',
+  },
 ];

@@ -5,6 +5,7 @@ import LanguageStep from '../../components/onboarding/LanguageSteps';
 import LoginStep from '../../components/onboarding/LoginStep';
 import SignupStep from '../../components/onboarding/SignupStep';
 import HeightStep from '../../components/onboarding/HeightStep';
+import DateStep from '../../components/onboarding/DateStep';
 
 export default function OnboardingScreen({ navigation }) {
   const [stepIndex, setStepIndex] = useState(0);
@@ -33,7 +34,10 @@ const renderStep = () => {
       
     case 'HEIGHT':
       return <HeightStep onNext={handleNext} />;
-      
+
+    case 'DATE':
+      return <DateStep onNext={handleNext} />;
+
     default:
       return null;
   }
@@ -58,6 +62,8 @@ const renderStep = () => {
         return styles.signupBtn;
       case 'HEIGHT':
         return styles.heightBtn;
+      case 'DATE':
+        return styles.dateBtn;
       default:
         return {};
     }
@@ -129,6 +135,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   heightBtn: {
+     backgroundColor: '#111',
+    width: '50%',
+    alignSelf: 'flex-end',
+  },
+   dateBtn: {
      backgroundColor: '#111',
     width: '50%',
     alignSelf: 'flex-end',
