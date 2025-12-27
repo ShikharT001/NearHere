@@ -1,17 +1,20 @@
-// src/screens/profile/ProfileScreen.js
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function ProfileScreen() {
+export default function ConfessionsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile Screen</Text>
+      <View style={styles.content}>
+        <Text style={{ fontFamily: 'Poppins-SemiBold' }}>Confessions Screen</Text>
+      </View>
+
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F4C2C2', // 🔥 SCREEN COLOR
+    backgroundColor: '#1B1919', // 🔥 SCREEN COLOR
     justifyContent: 'center',
     alignItems: 'center',
   },

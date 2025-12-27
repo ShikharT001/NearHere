@@ -1,16 +1,16 @@
 
 // AppNavigator.js
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { View } from 'react-native';
-
 import GetStartedScreen from '../screens/Onboarding/GetStartedScreen';
 import OnboardingScreen from '../screens/Onboarding/OnboardingScreen';
-import HomeScreen from '../screens/home/HomeScreen';
-import SearchScreen from '../screens/search/SearchScreen';
-import CartScreen from '../screens/cart/CartScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
-import BottomNav from '../components/BottomNav';
+import RadarScreen from '../screens/radar/RadarScreen';
+import PostScreen from '../screens/post/PostScreen';
+import ConfessionsScreen from '../screens/confessions/ConfessionsScreen';
+import MatchScreen from '../screens/match/MatchScreen';
 
+import BottomNav from '../components/BottomNav';
+import TopNav from '../components/TopNav';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -23,28 +23,40 @@ export default function AppNavigator() {
       <Stack.Screen name="GetStarted" component={GetStartedScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       {/* WITH BOTTOM NAV */}
-      <Stack.Screen name="Home">
+      <Stack.Screen name="Radar">
         {() => (
           <>
-            <HomeScreen />
+            <TopNav/>
+            <RadarScreen />
             <BottomNav />
           </>
         )}
       </Stack.Screen>
 
-      <Stack.Screen name="Search">
+      <Stack.Screen name="Post">
         {() => (
           <>
-            <SearchScreen />
+              <TopNav/>
+            <PostScreen />
             <BottomNav />
           </>
         )}
       </Stack.Screen>
 
-      <Stack.Screen name="Cart">
+      <Stack.Screen name="Confessions">
         {() => (
           <>
-            <CartScreen />
+            <TopNav/>
+            <ConfessionsScreen />
+            <BottomNav />
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Match">
+        {() => (
+          <>
+            <TopNav/>
+            <MatchScreen />
             <BottomNav />
           </>
         )}
@@ -53,6 +65,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Profile">
         {() => (
           <>
+            <TopNav/>
             <ProfileScreen />
             <BottomNav />
           </>

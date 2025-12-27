@@ -59,7 +59,7 @@ const renderStep = () => {
     if (stepIndex < onboardingSteps.length - 1) {
       setStepIndex(stepIndex + 1);
     } else {
-      navigation.replace('Home');
+      navigation.replace('Radar');
     }
   };
   

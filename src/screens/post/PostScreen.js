@@ -1,13 +1,14 @@
 // src/screens/profile/ProfileScreen.js
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function ProfileScreen() {
+export default function PostScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile Screen</Text>
+      <Text style={styles.text}>Post Screen</Text>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

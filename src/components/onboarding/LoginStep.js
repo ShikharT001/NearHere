@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   formContainer: {
+    paddingHorizontal:10,
     width: '100%',
-    marginBottom: 10,
   },
   input: {
     width: '100%',
@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Urbanist-Medium',
   },
   loginBtn: {
-    width: '100%',
+    width: '70%',
     backgroundColor: '#111',
-    paddingVertical: 16,
+    paddingVertical: 10,
     borderRadius: 30,
     alignItems: 'center',
     marginBottom: 20,
