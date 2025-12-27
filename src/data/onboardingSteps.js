@@ -29,4 +29,20 @@ export const onboardingSteps = [
     component: 'DATE',
     buttonText: 'Next',
   },
+  {
+    id: 6,
+    component: 'OTP',
+    buttonText: 'Next',
+  },
+   {
+    id: 7,
+    title: "Tell us where you are — we'll handle the who.",
+    component: 'LOCATION',
+    buttonText: 'Next',
+  },
+  {
+    id: 8,
+    component: 'SIGNIN',
+    buttonText: 'Next',
+  },
 ];

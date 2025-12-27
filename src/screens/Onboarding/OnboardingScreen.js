@@ -6,6 +6,9 @@ import LoginStep from '../../components/onboarding/LoginStep';
 import SignupStep from '../../components/onboarding/SignupStep';
 import HeightStep from '../../components/onboarding/HeightStep';
 import DateStep from '../../components/onboarding/DateStep';
+import OtpStep from '../../components/onboarding/OtpStep';
+import LocationStep from '../../components/onboarding/LocationStep';
+import SigninStep from '../../components/onboarding/SigninStep';
 
 export default function OnboardingScreen({ navigation }) {
   const [stepIndex, setStepIndex] = useState(0);
@@ -38,6 +41,15 @@ const renderStep = () => {
     case 'DATE':
       return <DateStep onNext={handleNext} />;
 
+    case 'OTP':
+      return <OtpStep onNext={handleNext} />;
+    
+    case 'LOCATION':
+      return <LocationStep onNext={handleNext} />;
+
+    case 'SIGNIN':
+      return <SigninStep  onNext={handleNext} />;
+
     default:
       return null;
   }
@@ -64,6 +76,12 @@ const renderStep = () => {
         return styles.heightBtn;
       case 'DATE':
         return styles.dateBtn;
+      case 'OTP':
+        return styles.otpBtn;
+      case 'LOCATION':
+        return styles.locBtn;
+        case 'SIGNIN':
+        return styles.signinBtn;
       default:
         return {};
     }
@@ -102,8 +120,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Urbanist-Bold',
-    fontSize: 31,
+    fontSize: 25,
     marginBottom: 20,
+    textAlign: "center",
   },
   content: {
     flex: 1,
@@ -141,6 +160,21 @@ const styles = StyleSheet.create({
   },
    dateBtn: {
      backgroundColor: '#111',
+    width: '50%',
+    alignSelf: 'flex-end',
+  },
+   otpBtn: {
+     backgroundColor: '#111',
+    width: '50%',
+    alignSelf: 'flex-end',
+  },
+   locBtn: {
+     backgroundColor: '#111',
+    width: '50%',
+    alignSelf: 'flex-end',
+  },
+  signinBtn: {
+    backgroundColor: '#111',
     width: '50%',
     alignSelf: 'flex-end',
   },
