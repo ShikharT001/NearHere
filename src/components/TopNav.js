@@ -1,7 +1,6 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet,Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function TopNav() {
   const navigation = useNavigation();
@@ -25,7 +24,8 @@ export default function TopNav() {
       ]}
     >
       {/* LEFT ICON */}
-      <IconWrapper onPress={() => navigation.goBack()}>
+      {/* <IconWrapper onPress={() => navigation.goBack()}> */}
+        <IconWrapper onPress={()=> navigation.navigate('Filter')}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={48}
@@ -39,6 +39,7 @@ export default function TopNav() {
           />
         </svg>
       </IconWrapper>
+        <Text style={styles.text}>Near Here</Text>
 
       {/* RIGHT ICON */}
       <IconWrapper onPress={() => navigation.navigate('Profile')}>
@@ -62,6 +63,11 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'transparent',
     zIndex: 1000,
+  },
+  text: {
+    fontFamily: 'Urbanist-Regular',
+    fontSize: 32,
+    fontWeight:700,
   },
 
   iconWrapper: {

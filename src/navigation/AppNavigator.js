@@ -8,6 +8,7 @@ import RadarScreen from '../screens/radar/RadarScreen';
 import PostScreen from '../screens/post/PostScreen';
 import ConfessionsScreen from '../screens/confessions/ConfessionsScreen';
 import MatchScreen from '../screens/match/MatchScreen';
+import FilterScreen from '../screens/filter/FilterScreen';
 
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
@@ -22,6 +23,8 @@ export default function AppNavigator() {
       {/* NO BOTTOM NAV */}
       <Stack.Screen name="GetStarted" component={GetStartedScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      <Stack.Screen name="Filter" component={FilterScreen} />
+
       {/* WITH BOTTOM NAV */}
       <Stack.Screen name="Radar">
         {() => (
@@ -46,7 +49,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Confessions">
         {() => (
           <>
-            <TopNav/>
+            
             <ConfessionsScreen />
             <BottomNav />
           </>
