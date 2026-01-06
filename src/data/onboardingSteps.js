@@ -45,4 +45,9 @@ export const onboardingSteps = [
     component: 'SIGNIN',
     buttonText: 'Next',
   },
+  {
+    id:9,
+    component:'WELCOMESTEP',
+    buttonText: 'Next',
+  }
 ];

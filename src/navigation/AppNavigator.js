@@ -9,7 +9,7 @@ import PostScreen from '../screens/post/PostScreen';
 import ConfessionsScreen from '../screens/confessions/ConfessionsScreen';
 import MatchScreen from '../screens/match/MatchScreen';
 import FilterScreen from '../screens/filter/FilterScreen';
-
+import OnboardingQuestion from '../screens/Onboarding/OnboardingQuestion';
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
 const Stack = createNativeStackNavigator();
@@ -23,8 +23,8 @@ export default function AppNavigator() {
       {/* NO BOTTOM NAV */}
       <Stack.Screen name="GetStarted" component={GetStartedScreen} />
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      <Stack.Screen name="OnboardingQuestion" component={OnboardingQuestion} />
       <Stack.Screen name="Filter" component={FilterScreen} />
-
       {/* WITH BOTTOM NAV */}
       <Stack.Screen name="Radar">
         {() => (

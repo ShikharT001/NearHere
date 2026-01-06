@@ -9,7 +9,7 @@ import DateStep from '../../components/onboarding/DateStep';
 import OtpStep from '../../components/onboarding/OtpStep';
 import LocationStep from '../../components/onboarding/LocationStep';
 import SigninStep from '../../components/onboarding/SigninStep';
-
+import WelcomeStep from '../../components/onboarding/WelcomeStep';
 export default function OnboardingScreen({ navigation }) {
   const [stepIndex, setStepIndex] = useState(0);
   const step = onboardingSteps[stepIndex];
@@ -50,6 +50,9 @@ const renderStep = () => {
     case 'SIGNIN':
       return <SigninStep  onNext={handleNext} />;
 
+    case 'WELCOMESTEP':
+      return <WelcomeStep onNext={handleNext} />;
+
     default:
       return null;
   }
@@ -59,7 +62,7 @@ const renderStep = () => {
     if (stepIndex < onboardingSteps.length - 1) {
       setStepIndex(stepIndex + 1);
     } else {
-      navigation.replace('Radar');
+      navigation.replace('OnboardingQuestion');
     }
   };
   
@@ -82,13 +85,28 @@ const renderStep = () => {
         return styles.locBtn;
         case 'SIGNIN':
         return styles.signinBtn;
+      case 'WELCOMESTEP':
+        return styles.signinBtn;
       default:
         return {};
     }
   };
-
+const getDynamicContainerStyle = () => {
+  switch (step.component) {
+    case 'WELCOMESTEP':
+      return { 
+        flex: 1,
+        backgroundColor: '#f6efdc', // The new color you want for Welcome
+        paddingHorizontal: 20,
+        paddingTop: 5,
+        paddingBottom:3,
+      };
+    default:
+      return styles.container; // Uses your default pink styles
+  }
+};
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={getDynamicContainerStyle()}>
       {/* TITLE */}
       <Text style={styles.title}>{step.title}</Text>
 
@@ -96,7 +114,7 @@ const renderStep = () => {
       <View style={styles.content}>
         {renderStep()}
       </View>
-
+     
       {/* DYNAMIC BUTTON - Removed if step is LOGIN */}
       {step.component !== 'LOGIN' && (
         <TouchableOpacity 
@@ -178,4 +196,7 @@ const styles = StyleSheet.create({
     width: '50%',
     alignSelf: 'flex-end',
   },
+
+
+  
 });
