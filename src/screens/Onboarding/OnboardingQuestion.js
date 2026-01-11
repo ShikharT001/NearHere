@@ -17,6 +17,14 @@ const MultiStepForm = () => {
   // 1. Data Array
   const steps = [
     {
+      id: 0,
+      heading: "Just the Basics Real You - No Filters No Fluff.",
+      subHeading: "Answer a few fun questions to build your profile",
+      options: [],
+      image: null,
+      bgColor: '#F6EFDC'
+    },
+    {
       id: 1,
       heading: "Heart: taken, open, or tangled? 😉",
       subHeading: "What makes you smile? Pick your passions",
@@ -30,7 +38,7 @@ const MultiStepForm = () => {
       subHeading: "Help us find people like you",
       options: ["Adventurous", "Homebody", "Workaholic"],
       image: require('../../../assets/images/Research-paper-rafiki-1.png'),
-      bgColor: '#D1C4E9'
+      bgColor: '#F8BBD0'
     },
     {
       id: 3,
@@ -38,7 +46,7 @@ const MultiStepForm = () => {
       subHeading: "How do you handle the grind?",
       options: ["Remote Pro", "Office Enthusiast", "Coffee Shop Nomad"],
       image: require('../../../assets/images/Working-remotely-bro.png'),
-      bgColor: '#C5CAE9'
+      bgColor: '#F8BBD0'
     },
     {
       id: 4,
@@ -46,7 +54,7 @@ const MultiStepForm = () => {
       subHeading: "Do you follow a religion or just your heart?",
       options: ["Spiritual", "Religious", "Atheist", "Netflix is my religion"],
       image: require('../../../assets/images/Thoughts-rafiki.png'),
-      bgColor: '#B3E5FC'
+      bgColor: '#F8BBD0'
     },
     {
       id: 5,
@@ -54,7 +62,7 @@ const MultiStepForm = () => {
       subHeading: "What's your preferred drink?",
       options: ["Frequent", "Socially", "Never"],
       image: require('../../../assets/images/drinking-shots-amico.png'),
-      bgColor: '#B2DFDB'
+      bgColor: '#F8BBD0'
     },
     {
       id: 6,
@@ -62,7 +70,7 @@ const MultiStepForm = () => {
       subHeading: "Do you smoke or stay smoke-free?",
       options: ["Smoker", "Non-Smoker", "Trying to quit"],
       image: require('../../../assets/images/Bad-idea-cuate.png'),
-      bgColor: '#DCEDC8'
+      bgColor: '#F8BBD0'
     },
     {
       id: 7,
@@ -70,7 +78,7 @@ const MultiStepForm = () => {
       subHeading: "What keeps you sane (or insane)? 😜",
       options: ["Gaming", "Cooking", "Traveling", "Art"],
       image: require('../../../assets/images/Select-player-bro 1.png'),
-      bgColor: '#FFF9C4'
+      bgColor: '#F8BBD0'
     },
     {
       id: 8,
@@ -78,7 +86,7 @@ const MultiStepForm = () => {
       subHeading: "Are you into sports or the couch?",
       options: ["Athlete", "Fan", "Neither"],
       image: require('../../../assets/images/Gym-bro.png'),
-      bgColor: '#FFECB3'
+      bgColor: '#F8BBD0'
     },
     {
       id: 9,
@@ -86,7 +94,7 @@ const MultiStepForm = () => {
       subHeading: "How do you show love — or flirt 👀?",
       options: ["Physical Touch", "Words of Affirmation", "Quality Time"],
       image: require('../../../assets/images/Holding-hands-bro1.png'),
-      bgColor: '#FFE0B2'
+      bgColor: '#F8BBD0'
     },
     {
       id: 10,
@@ -94,15 +102,25 @@ const MultiStepForm = () => {
       subHeading: "What’s your weekend mood?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Going-offline-bro.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
+
+
+    {
+      id: 10,
+      heading: "Your Flavour Zone What you vibe with, crave, and binge on!",
+      options: [],
+      image: null,
+      bgColor: '#F6EFDC'
+    },
+
     {
       id: 11,
       heading: "Fitness Vibe?💪",
       subHeading: "Gym, jog, or just walking to the fridge?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Fitness-tracker-amico.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 12,
@@ -110,7 +128,7 @@ const MultiStepForm = () => {
       subHeading: " What kind of movies do you vibe with?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Home-cinema-amico.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 13,
@@ -118,7 +136,7 @@ const MultiStepForm = () => {
       subHeading: " Veg, Non-Veg, or just vibes with fries?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Eating-together-bro.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 14,
@@ -126,7 +144,7 @@ const MultiStepForm = () => {
       subHeading: " Are you all about masala or minimalism?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Order-food-bro.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 15,
@@ -134,7 +152,7 @@ const MultiStepForm = () => {
       subHeading: "Be honest… still watching Doraemon or anime?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Movie-Night-cuate.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 16,
@@ -142,7 +160,7 @@ const MultiStepForm = () => {
       subHeading: " If you went on a date, what would you pick?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Night-date-rafiki.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 17,
@@ -150,7 +168,7 @@ const MultiStepForm = () => {
       subHeading: " Do you blame your mood on Mercury Retrograde?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Questions-pana.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 18,
@@ -158,7 +176,7 @@ const MultiStepForm = () => {
       subHeading: "  Dogs, cats, or just plants and peace?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Adopt-pet-rafiki.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 19,
@@ -166,7 +184,7 @@ const MultiStepForm = () => {
       subHeading: "  Dogs, cats, or just plants and peace?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Lo-fi-concept-pana.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 20,
@@ -174,15 +192,27 @@ const MultiStepForm = () => {
       subHeading: "   What kind of chaos are you? 😏",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Choose-pana.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
+
+    {
+      id: 20,
+      heading: "Date Energy: Unlocked” For: Reactions, flirty behavior, date choices, emotional responses",
+      subHeading: "Answer a few fun questions to build your profile",
+      options: [],
+      image: null,
+      bgColor: '#F6EFDC'
+    },
+
+
+
     {
       id: 21,
       heading: "Late Text Dilemma🤦‍♀️",
       subHeading: "   Your crush texts you 'wyd?' at 2 AM. You... 😏",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Texting-pana.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 22,
@@ -190,7 +220,7 @@ const MultiStepForm = () => {
       subHeading: "  What’s your idea of a perfect first date?😗👉👈",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Romantic-Getaway-cuate.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 23,
@@ -198,7 +228,7 @@ const MultiStepForm = () => {
       subHeading: "It suddenly rains during your date. You...",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Weather-rafiki.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 24,
@@ -206,7 +236,7 @@ const MultiStepForm = () => {
       subHeading: "Your date orders pineapple pizza. Your reaction?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Pizza-sharing-rafiki.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 25,
@@ -214,7 +244,7 @@ const MultiStepForm = () => {
       subHeading: "First date, the bill drops. What’s your move?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Payment-Information-bro.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 26,
@@ -222,7 +252,7 @@ const MultiStepForm = () => {
       subHeading: "How do you usually text your crush?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Texting.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     
     {
@@ -231,14 +261,14 @@ const MultiStepForm = () => {
       subHeading: "You both get a surprise week off. Where are you going together?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/London.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },{
       id: 28,
       heading: " Let’s talk damage control🤨",
       subHeading: "Gym, jog, or just walking to the fridge?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Blaming.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 29,
@@ -246,7 +276,7 @@ const MultiStepForm = () => {
       subHeading: " It’s Sunday with your partner. What's the plan?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/People.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 30,
@@ -254,7 +284,7 @@ const MultiStepForm = () => {
       subHeading: "You’re catching feelings fast. What now?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Questions-amico.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
     {
       id: 31,
@@ -262,7 +292,7 @@ const MultiStepForm = () => {
       subHeading: "Which one makes your heart skip a beat? 💗",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/Couple-bro.png'),
-      bgColor: '#F5F5F5'
+      bgColor: '#F8BBD0'
     },
   ];
 
@@ -303,7 +333,7 @@ const MultiStepForm = () => {
       <SafeAreaView style={styles.finishContainer}>
         <Text style={styles.heading}>Profile Created! 🎉</Text>
         <Text style={styles.subText}>Ready to find your match?</Text>
-        <TouchableOpacity style={styles.nextButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.replace('radar')}>
           <Text style={styles.nextText}>Start Exploring</Text>
         </TouchableOpacity>
       </SafeAreaView>
