@@ -13,11 +13,11 @@ import {
 
 const { width } = Dimensions.get('window');
 
-const MultiStepForm = () => {
+const MultiStepForm = ({ navigation }) => {
   // 1. Data Array
   const steps = [
     {
-      id: 0,
+      id: 1,
       heading: "Just the Basics Real You - No Filters No Fluff.",
       subHeading: "Answer a few fun questions to build your profile",
       options: [],
@@ -25,7 +25,7 @@ const MultiStepForm = () => {
       bgColor: '#F6EFDC'
     },
     {
-      id: 1,
+      id: 2,
       heading: "Heart: taken, open, or tangled? 😉",
       subHeading: "What makes you smile? Pick your passions",
       options: ["Single", "Married", "Complicated"],
@@ -33,7 +33,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 2,
+      id: 3,
       heading: "What's your vibe?",
       subHeading: "Help us find people like you",
       options: ["Adventurous", "Homebody", "Workaholic"],
@@ -41,7 +41,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 3,
+      id: 4,
       heading: "Work style?",
       subHeading: "How do you handle the grind?",
       options: ["Remote Pro", "Office Enthusiast", "Coffee Shop Nomad"],
@@ -49,7 +49,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 4,
+      id: 5,
       heading: "Spiritual, religious, or Netflix loyal?",
       subHeading: "Do you follow a religion or just your heart?",
       options: ["Spiritual", "Religious", "Atheist", "Netflix is my religion"],
@@ -57,7 +57,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 5,
+      id: 6,
       heading: "Cocktails, mocktails, or none? 🍻",
       subHeading: "What's your preferred drink?",
       options: ["Frequent", "Socially", "Never"],
@@ -65,7 +65,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 6,
+      id: 7,
       heading: "Puff 🚬 or pass 🚭",
       subHeading: "Do you smoke or stay smoke-free?",
       options: ["Smoker", "Non-Smoker", "Trying to quit"],
@@ -73,7 +73,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 7,
+      id: 8,
       heading: "Stuff that makes you, YOU.",
       subHeading: "What keeps you sane (or insane)? 😜",
       options: ["Gaming", "Cooking", "Traveling", "Art"],
@@ -81,7 +81,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 8,
+      id: 9,
       heading: "Sweat or spectate?",
       subHeading: "Are you into sports or the couch?",
       options: ["Athlete", "Fan", "Neither"],
@@ -89,7 +89,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 9,
+      id: 10,
       heading: "Affection — how do you serve it?",
       subHeading: "How do you show love — or flirt 👀?",
       options: ["Physical Touch", "Words of Affirmation", "Quality Time"],
@@ -97,7 +97,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 10,
+      id: 11,
       heading: "Your weekend, your rules 😎🤩",
       subHeading: "What’s your weekend mood?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -107,7 +107,7 @@ const MultiStepForm = () => {
 
 
     {
-      id: 10,
+      id: 12,
       heading: "Your Flavour Zone What you vibe with, crave, and binge on!",
       options: [],
       image: null,
@@ -115,7 +115,7 @@ const MultiStepForm = () => {
     },
 
     {
-      id: 11,
+      id: 13,
       heading: "Fitness Vibe?💪",
       subHeading: "Gym, jog, or just walking to the fridge?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -123,7 +123,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 12,
+      id: 14,
       heading: "Drama, thrill, or chill?🫣",
       subHeading: " What kind of movies do you vibe with?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -131,7 +131,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 13,
+      id: 15,
       heading: "Flavor speaks louder than words😋",
       subHeading: " Veg, Non-Veg, or just vibes with fries?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -139,7 +139,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 14,
+      id: 16,
       heading: "Desi vs Videsi🤪",
       subHeading: " Are you all about masala or minimalism?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -147,7 +147,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 15,
+      id: 17,
       heading: "Still secretly bingeing?👻",
       subHeading: "Be honest… still watching Doraemon or anime?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -155,7 +155,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 16,
+      id: 18,
       heading: "Dream Date Style🙈🙊",
       subHeading: " If you went on a date, what would you pick?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -163,7 +163,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 17,
+      id: 19,
       heading: "Zodiac Believer?🤔",
       subHeading: " Do you blame your mood on Mercury Retrograde?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -171,7 +171,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 18,
+      id: 20,
       heading: "Your emotional support  system🥸",
       subHeading: "  Dogs, cats, or just plants and peace?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -179,7 +179,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 19,
+      id: 21,
       heading: "When do you function like a human?",
       subHeading: "  Dogs, cats, or just plants and peace?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -187,7 +187,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 20,
+      id: 22,
       heading: "Your chaos, your category🐣",
       subHeading: "   What kind of chaos are you? 😏",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -196,7 +196,7 @@ const MultiStepForm = () => {
     },
 
     {
-      id: 20,
+      id: 23,
       heading: "Date Energy: Unlocked” For: Reactions, flirty behavior, date choices, emotional responses",
       subHeading: "Answer a few fun questions to build your profile",
       options: [],
@@ -207,7 +207,7 @@ const MultiStepForm = () => {
 
 
     {
-      id: 21,
+      id: 24,
       heading: "Late Text Dilemma🤦‍♀️",
       subHeading: "   Your crush texts you 'wyd?' at 2 AM. You... 😏",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -215,7 +215,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 22,
+      id: 25,
       heading: " 📍Location : First Date",
       subHeading: "  What’s your idea of a perfect first date?😗👉👈",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -223,7 +223,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 23,
+      id: 26,
       heading: " Unexpected Rain🌧️",
       subHeading: "It suddenly rains during your date. You...",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -231,7 +231,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 24,
+      id: 27,
       heading: " They Order Pineapple Pizza🙂",
       subHeading: "Your date orders pineapple pizza. Your reaction?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -239,7 +239,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 25,
+      id: 28,
       heading: " The bill drama begins…",
       subHeading: "First date, the bill drops. What’s your move?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -247,7 +247,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 26,
+      id: 29,
       heading: " Texting Style🫡",
       subHeading: "How do you usually text your crush?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -256,14 +256,14 @@ const MultiStepForm = () => {
     },
     
     {
-      id: 27,
+      id: 30,
       heading: " Holiday mood check✅",
       subHeading: "You both get a surprise week off. Where are you going together?",
       options: ["Party Mode", "Recharge", "Family Time"],
       image: require('../../../assets/images/London.png'),
       bgColor: '#F8BBD0'
     },{
-      id: 28,
+      id: 31,
       heading: " Let’s talk damage control🤨",
       subHeading: "Gym, jog, or just walking to the fridge?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -271,7 +271,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 29,
+      id: 32,
       heading: " Ideal Weekend Together🤠",
       subHeading: " It’s Sunday with your partner. What's the plan?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -279,7 +279,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 30,
+      id: 33,
       heading: " Crushing? Confessing? Ghosting??😬",
       subHeading: "You’re catching feelings fast. What now?",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -287,7 +287,7 @@ const MultiStepForm = () => {
       bgColor: '#F8BBD0'
     },
     {
-      id: 31,
+      id: 34,
       heading: " 😎 BONUS Round: 'Pick Your Type'",
       subHeading: "Which one makes your heart skip a beat? 💗",
       options: ["Party Mode", "Recharge", "Family Time"],
@@ -312,7 +312,9 @@ const MultiStepForm = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      setIsFinished(true); // Replaces alert for professional flow
+      // setIsFinished(true); // Replaces alert for professional flow
+       navigation.replace('Radar');
+
     }
   };
 
@@ -328,17 +330,14 @@ const MultiStepForm = () => {
   };
 
   // 4. COMPLETION SCREEN
+
+
   if (isFinished) {
-    return (
-      <SafeAreaView style={styles.finishContainer}>
-        <Text style={styles.heading}>Profile Created! 🎉</Text>
-        <Text style={styles.subText}>Ready to find your match?</Text>
-        <TouchableOpacity style={styles.nextButton} onPress={() => navigation.replace('radar')}>
-          <Text style={styles.nextText}>Start Exploring</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    );
+    // replace ensures they can't go back to the setup screens
+    navigation.replace('Radar');
   }
+
+ 
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: stepData.bgColor }]}>
@@ -384,7 +383,8 @@ const MultiStepForm = () => {
       {/* Footer Navigation */}
       <View style={styles.footer}>
         {currentStep > 0 ? (
-          <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
+          // <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>  This is for going back to previous question
+          <TouchableOpacity onPress={handleNext} style={styles.skipButton}>
             <Text style={styles.skipText}>Skip</Text>
           </TouchableOpacity>
         ) : (
