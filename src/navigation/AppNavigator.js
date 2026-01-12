@@ -12,6 +12,8 @@ import FilterScreen from '../screens/filter/FilterScreen';
 import OnboardingQuestion from '../screens/Onboarding/OnboardingQuestion';
 import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
+import PersonalityDetailScreenn from '../screens/presonality/common';
+import NearHereMain from '../screens/message/message';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -68,9 +70,23 @@ export default function AppNavigator() {
       <Stack.Screen name="Profile">
         {() => (
           <>
-            <TopNav/>
             <ProfileScreen />
             <BottomNav />
+          </>
+        )}
+      </Stack.Screen>
+
+      <Stack.Screen name="Personality">
+        {() => (
+          <>
+            <PersonalityDetailScreenn/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Message">
+        {() => (
+          <>
+            <NearHereMain/>
           </>
         )}
       </Stack.Screen>
