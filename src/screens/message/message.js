@@ -57,35 +57,48 @@ export default function NearHereMain() {
   );
 }
 
-const MessagesContent = () => (
-  <ScrollView showsVerticalScrollIndicator={false}>
-    {/* Professional Search Bar Color */}
-    <View style={styles.searchBar}>
-      <Ionicons name="search" size={20} color="#636E72" />
-      <TextInput 
-        placeholder="Search conversations..." 
-        placeholderTextColor="#636E72"
-        style={styles.searchInput} 
-      />
-    </View>
+const MessagesContent = () => {
+  const navigation = useNavigation(); // Hook to access navigation
 
-    {[1, 2, 3, 4, 5, 6].map((_, i) => (
-      <TouchableOpacity key={i} style={styles.messageRow}>
-        <View style={styles.avatarBorder}>
-          <Ionicons name="person" size={26} color="#2D3436" />
-        </View>
-        <View style={styles.messageTextContainer}>
-          <View style={styles.rowBetween}>
-            <Text style={styles.username}>username</Text>
-            <Text style={styles.timeText}>2 hr</Text>
+  return (
+    <ScrollView showsVerticalScrollIndicator={false}>
+      {/* Professional Search Bar */}
+      <View style={styles.searchBar}>
+        <Ionicons name="search" size={20} color="#636E72" />
+        <TextInput 
+          placeholder="Search conversations..." 
+          placeholderTextColor="#636E72"
+          style={styles.searchInput} 
+        />
+      </View>
+
+      {[1, 2, 3, 4, 5, 6].map((_, i) => (
+        <TouchableOpacity 
+          key={i} 
+          style={styles.messageRow}
+          // ADDED NAVIGATION HERE
+          onPress={() => navigation.navigate('Messagedetail', { user: 'username' })}
+        >
+          <View style={styles.avatarBorder}>
+            <Ionicons name="person" size={26} color="#2D3436" />
           </View>
-          <Text style={styles.messagePreview} numberOfLines={1}>7+ messages received from this user.</Text>
-        </View>
-        <Feather name="camera" size={20} color="#B2BEC3" style={{ marginLeft: 10 }} />
-      </TouchableOpacity>
-    ))}
-  </ScrollView>
-);
+          
+          <View style={styles.messageTextContainer}>
+            <View style={styles.rowBetween}>
+              <Text style={styles.username}>username</Text>
+              <Text style={styles.timeText}>2 hr</Text>
+            </View>
+            <Text style={styles.messagePreview} numberOfLines={1}>
+              7+ messages received from this user.
+            </Text>
+          </View>
+          
+          <Feather name="camera" size={20} color="#B2BEC3" style={{ marginLeft: 10 }} />
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
+};
 
 const RequestsContent = () => (
   <ScrollView showsVerticalScrollIndicator={false}>

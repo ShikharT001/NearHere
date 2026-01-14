@@ -14,6 +14,9 @@ import BottomNav from '../components/BottomNav';
 import TopNav from '../components/TopNav';
 import PersonalityDetailScreenn from '../screens/presonality/common';
 import NearHereMain from '../screens/message/message';
+import ChatDetailScreen from '../screens/message/messagedetail';
+import CallScreen from '../screens/message/call';
+import ProfileMessage from '../screens/message/profile';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -87,6 +90,27 @@ export default function AppNavigator() {
         {() => (
           <>
             <NearHereMain/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Messagedetail">
+        {() => (
+          <>
+            <ChatDetailScreen/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="Call">
+        {() => (
+          <>
+            <CallScreen/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="ProfileView">
+        {() => (
+          <>
+            <ProfileMessage/>
           </>
         )}
       </Stack.Screen>
