@@ -17,6 +17,7 @@ import NearHereMain from '../screens/message/message';
 import ChatDetailScreen from '../screens/message/messagedetail';
 import CallScreen from '../screens/message/call';
 import ProfileMessage from '../screens/message/profile';
+import SubscriptionScreen from '../screens/subscription/subscription';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -114,6 +115,15 @@ export default function AppNavigator() {
           </>
         )}
       </Stack.Screen>
+      <Stack.Screen name="Subscription">
+        {() => (
+          <>
+            <SubscriptionScreen/>
+          </>
+        )}
+      </Stack.Screen>
+
     </Stack.Navigator>
+
   );
 }

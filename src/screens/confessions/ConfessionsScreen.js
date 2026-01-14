@@ -8,9 +8,22 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Svg, { Path, Circle, Rect } from 'react-native-svg';
-
 // --- SVG ICON COMPONENTS ---
+
+const SubscriptionIconSVG = () => (
+  <Svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+      fill="#FFD700" // Gold Color
+      stroke="#FFD700"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
 
 const ProfilePlaceholderSVG = ({ color = "#333" }) => (
   <Svg width="60" height="60" viewBox="0 0 24 24" fill="none">
@@ -73,15 +86,22 @@ const ConfessionCard = () => (
 );
 
 export default function ConfessionsScreen() {
+
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
+      {/* Navigation Icon */}
+     <TouchableOpacity 
+        style={styles.subscriptionBtn} 
+        onPress={() => navigation.navigate('Subscription')}
+      >
+        <SubscriptionIconSVG />
+      </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        
         {/* Header Section */}
         <View style={styles.header}>
-          {/* Emoji Placeholder */}
           <View style={styles.emojiPlaceholder}>
-             <Text style={{ fontSize: 70 }}>🤫</Text>
+            <Text style={{ fontSize: 70 }}>🤫</Text>
           </View>
           <Text style={styles.titleText}>Anonymous{'\n'}confessions</Text>
         </View>
@@ -90,10 +110,9 @@ export default function ConfessionsScreen() {
         <ConfessionCard />
         <ConfessionCard />
         <ConfessionCard />
-
       </ScrollView>
 
-      {/* Input Bar Section */}
+      {/* Input Bar Section stays as it was... */}
       <View style={styles.inputWrapper}>
         <View style={styles.inputContainer}>
           <View style={{ marginRight: 10 }}>
@@ -208,5 +227,15 @@ const styles = StyleSheet.create({
     flex: 1,
     color: 'white',
     fontSize: 15,
+  },
+
+  subscriptionBtn: {
+    position: 'absolute',
+    top: 50, // Adjust based on status bar height
+    right: 20,
+    zIndex: 10,
+    backgroundColor: 'rgba(255, 215, 0, 0.15)', // Subtle gold glow
+    padding: 8,
+    borderRadius: 12,
   },
 });
