@@ -18,6 +18,10 @@ import ChatDetailScreen from '../screens/message/messagedetail';
 import CallScreen from '../screens/message/call';
 import ProfileMessage from '../screens/message/profile';
 import SubscriptionScreen from '../screens/subscription/subscription';
+import SettingsScreen from '../screens/setting/SettingScreen';
+import ManageProfileSetting from '../screens/setting/ManageProfileSetting';
+import NotificationSetting from '../screens/setting/NotifiactionSetting';
+import MyAccount from '../screens/setting/MyAccount';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -119,6 +123,34 @@ export default function AppNavigator() {
         {() => (
           <>
             <SubscriptionScreen/>
+          </>
+        )}
+      </Stack.Screen>
+       <Stack.Screen name="setting">
+        {() => (
+          <>
+            <SettingsScreen/>
+          </>
+        )}
+      </Stack.Screen>
+       <Stack.Screen name="managesetting">
+        {() => (
+          <>
+            <ManageProfileSetting/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="notificationsetting">
+        {() => (
+          <>
+            <NotificationSetting/>
+          </>
+        )}
+      </Stack.Screen>
+      <Stack.Screen name="myaccount">
+        {() => (
+          <>
+            <MyAccount/>
           </>
         )}
       </Stack.Screen>

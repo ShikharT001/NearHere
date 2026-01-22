@@ -66,8 +66,8 @@ export default function ProfileScreen() {
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.headerBtn}>
               <Ionicons name="chevron-back" size={24} color="black" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.headerBtn}>
-              <MaterialCommunityIcons name="pencil" size={22} color="black" />
+            <TouchableOpacity onPress={() => navigation.navigate('setting')} style={styles.headerBtn}>
+              <Ionicons name="settings" size={22} color="black" />
             </TouchableOpacity>
           </View>
 
