@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,19 +7,36 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StatusBar,
-  Dimensions
+  Dimensions,
+  Animated,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
 export default function RadarScreen() {
+  const [fadeAnim] = useState(new Animated.Value(0));
+  const [slideUpAnim] = useState(new Animated.Value(50));
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+      Animated.spring(slideUpAnim, {
+        toValue: 0,
+        friction: 8,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
   return (
     <View style={styles.container}>
-      {/* Translucent StatusBar to let the map flow underneath */}
       <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
       
-      {/* MAP BACKGROUND SECTION */}
       <ImageBackground
         source={require('../../../assets/images/snap-chatmap.png')}
         style={styles.illustration}
@@ -27,19 +44,42 @@ export default function RadarScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           
-        
-          {/* SCANNING CARD SECTION - Positioned near the bottom */}
           <View style={styles.cardContainer}>
-            <View style={styles.scanCard}>
+            <Animated.View 
+              style={[
+                styles.scanCard,
+                {
+                  opacity: fadeAnim,
+                  transform: [{ translateY: slideUpAnim }],
+                }
+              ]}
+            >
+              <View style={styles.iconContainer}>
+                <MaterialCommunityIcons name="radar" size={40} color="#FF4567" />
+              </View>
+
               <Text style={styles.scanText}>Scanning for new friends nearby...</Text>
+
+              <View style={styles.infoRow}>
+                <View style={styles.infoItem}>
+                  <Ionicons name="people" size={16} color="#666" />
+                  <Text style={styles.infoText}>12 nearby</Text>
+                </View>
+                <View style={styles.infoDivider} />
+                <View style={styles.infoItem}>
+                  <Ionicons name="location" size={16} color="#666" />
+                  <Text style={styles.infoText}>5 km</Text>
+                </View>
+              </View>
               
               <TouchableOpacity 
                 style={styles.expandBtn} 
                 activeOpacity={0.8}
               >
                 <Text style={styles.expandText}>Expand Radius</Text>
+                <Ionicons name="arrow-forward" size={18} color="white" />
               </TouchableOpacity>
-            </View>
+            </Animated.View>
           </View>
 
         </SafeAreaView>
@@ -59,77 +99,84 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingTop: 10,
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: '800',
-    color: 'black',
-    // Added a subtle glow to ensure text is visible on any map part
-    textShadowColor: 'rgba(255, 255, 255, 0.8)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
-  },
-  iconCircle: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#EEEEEE',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 4,
-  },
   cardContainer: {
     position: 'absolute',
-    bottom: 50, // Adjusted because the bottom nav was removed
+    bottom: 40,
     width: '100%',
     alignItems: 'center',
   },
   scanCard: {
     backgroundColor: 'white',
-    width: width * 0.88,
-    borderRadius: 30,
+    width: width * 0.9,
+    borderRadius: 24,
     padding: 24,
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: 'black',
-    // Professional Neumorphic/Bold Shadow
     shadowColor: '#000',
-    shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 10,
+  },
+  iconContainer: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: '#FFE5E5',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   scanText: {
     fontSize: 17,
     fontWeight: '600',
-    color: '#000',
-    marginBottom: 20,
+    color: '#2c3e50',
+    marginBottom: 16,
     textAlign: 'center',
   },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F8F9FA',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    marginBottom: 16,
+  },
+  infoItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  infoText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#666',
+  },
+  infoDivider: {
+    width: 1,
+    height: 16,
+    backgroundColor: '#DDD',
+    marginHorizontal: 16,
+  },
   expandBtn: {
-    backgroundColor: '#FF7494', // Theme Pink
+    backgroundColor: '#FF4567',
     paddingVertical: 14,
-    paddingHorizontal: 45,
-    borderRadius: 18,
-    borderWidth: 1.5,
-    borderColor: 'black',
+    paddingHorizontal: 40,
+    borderRadius: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    width: '100%',
+    justifyContent: 'center',
+    shadowColor: '#FF4567',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
   },
   expandText: {
-    fontSize: 18,
-    fontWeight: '900',
-    color: 'black',
-    textTransform: 'none',
+    fontSize: 16,
+    fontWeight: '700',
+    color: 'white',
   },
 });
