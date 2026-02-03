@@ -13,7 +13,7 @@ import {
   Platform,
 } from 'react-native';
 import Svg, { Path, Circle, Polygon } from 'react-native-svg';
-
+import { useNavigation } from '@react-navigation/native';
 const { width, height } = Dimensions.get('window');
 const isSmallDevice = width < 375;
 
@@ -71,11 +71,12 @@ const TAB_CONTENT = {
   }
 };
 
-export default function SubscriptionScreen({ navigation, onBack }) {
+export default function SubscriptionScreen() {
+  const navigation = useNavigation();
   const [currentTab, setCurrentTab] = useState('Premium');
   const [selectedPlan, setSelectedPlan] = useState('p3m');
   const [activeIndex, setActiveIndex] = useState(0);
-  const flatListRef = useRef(null);
+  // const flatListRef = useRef(null);
   const currentData = TAB_CONTENT[currentTab];
   
   // Animation values
@@ -83,20 +84,13 @@ export default function SubscriptionScreen({ navigation, onBack }) {
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
 
+  
+
   // Handle back button press
   const handleBackPress = () => {
     // Try multiple navigation methods
-    if (onBack && typeof onBack === 'function') {
-      onBack();
-    } else if (navigation?.goBack) {
-      navigation.goBack();
-    } else if (navigation?.pop) {
-      navigation.pop();
-    } else if (navigation?.navigate) {
-      navigation.navigate('Home');
-    } else {
-      console.warn('No navigation method available. Please provide navigation prop or onBack callback.');
-    }
+    navigation.goBack();
+
   };
 
   // Animate on tab change
@@ -123,14 +117,15 @@ export default function SubscriptionScreen({ navigation, onBack }) {
   }, [currentTab]);
 
   // Logic for automatic sliding
-  useEffect(() => {
-    const interval = setInterval(() => {
-      let nextIndex = activeIndex === currentData.carousel.length - 1 ? 0 : activeIndex + 1;
-      flatListRef.current?.scrollToIndex({ index: nextIndex, animated: true });
-      setActiveIndex(nextIndex);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [activeIndex, currentTab]);
+useEffect(() => {
+  const interval = setInterval(() => {
+    let nextIndex = activeIndex === currentData.carousel.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  }, 2000); // Changed to 2 seconds
+  return () => clearInterval(interval);
+}, [activeIndex, currentTab]);
+
+
 
   const handleTabChange = (tab) => {
     setCurrentTab(tab);
@@ -273,33 +268,61 @@ export default function SubscriptionScreen({ navigation, onBack }) {
 
         {/* Carousel */}
         <View style={styles.mediaContainer}>
-          <FlatList
-            ref={flatListRef}
-            data={currentData.carousel}
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            onScroll={(e) => {
-              const index = Math.round(e.nativeEvent.contentOffset.x / width);
-              if (index !== activeIndex && index >= 0 && index < currentData.carousel.length) {
-                setActiveIndex(index);
-              }
+          <View style={styles.slide}>
+            <View style={[styles.imageBox, { 
+              shadowColor: currentData.themeColor,
+              borderColor: `${currentData.themeColor}20`,
+              borderWidth: 1,
+            }]}>
+              <Image 
+                source={currentData.carousel[activeIndex].img} 
+                style={styles.slideImage} 
+                resizeMode="contain" 
+              />
+            </View>
+            <Text style={styles.slideTitle}>
+              {currentData.carousel[activeIndex].title}
+            </Text>
+          </View>
+          
+          {/* Left Arrow */}
+          <TouchableOpacity 
+            style={[styles.arrow, styles.leftArrow]}
+            onPress={() => {
+              const prevIndex = activeIndex === 0 ? currentData.carousel.length - 1 : activeIndex - 1;
+              setActiveIndex(prevIndex);
             }}
-            scrollEventThrottle={16}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View style={styles.slide}>
-                <View style={[styles.imageBox, { 
-                  shadowColor: currentData.themeColor,
-                  borderColor: `${currentData.themeColor}20`,
-                  borderWidth: 1,
-                }]}>
-                  <Image source={item.img} style={styles.slideImage} resizeMode="contain" />
-                </View>
-                <Text style={styles.slideTitle}>{item.title}</Text>
-              </View>
-            )}
-          />
+          >
+            <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <Path 
+                d="M15 18l-6-6 6-6" 
+                stroke="#000" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+              />
+            </Svg>
+          </TouchableOpacity>
+          
+          {/* Right Arrow */}
+          <TouchableOpacity 
+            style={[styles.arrow, styles.rightArrow]}
+            onPress={() => {
+              const nextIndex = activeIndex === currentData.carousel.length - 1 ? 0 : activeIndex + 1;
+              setActiveIndex(nextIndex);
+            }}
+          >
+            <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <Path 
+                d="M9 18l6-6-6-6" 
+                stroke="#000" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+              />
+            </Svg>
+          </TouchableOpacity>
+          
           <View style={styles.pagination}>
             {currentData.carousel.map((_, i) => (
               <View 
@@ -315,7 +338,6 @@ export default function SubscriptionScreen({ navigation, onBack }) {
             ))}
           </View>
         </View>
-
         {/* Pricing Cards */}
         <View style={styles.pricingRow}>
           {currentData.pricing.map((item, index) => renderPriceCard(item, index))}
@@ -613,4 +635,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.5,
   },
+  arrow: {
+  position: 'absolute',
+  top: '35%',
+  backgroundColor: '#FFF',
+  padding: 8,
+  borderRadius: 20,
+  elevation: 5,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.15,
+  shadowRadius: 4,
+  zIndex: 10,
+},
+
+leftArrow: {
+  left: 16,
+},
+
+rightArrow: {
+  right: 16,
+},
 });

@@ -12,7 +12,7 @@ import {
   ScrollView
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import ScrollBlock from '../../components/ScrollBlock';
 const { width } = Dimensions.get('window');
 
 const MultiStepForm = ({ navigation }) => {
@@ -375,6 +375,10 @@ const MultiStepForm = ({ navigation }) => {
   }
 
   return (
+    <ScrollView 
+  scrollEnabled={false}   // <--- This disables user scrolling
+  contentContainerStyle={{ flex: 1 }} // Ensures it fills height
+>
     <LinearGradient
       colors={stepData.bgGradient}
       style={styles.container}
@@ -605,6 +609,8 @@ const MultiStepForm = ({ navigation }) => {
         
       </SafeAreaView>
     </LinearGradient>
+
+    </ScrollView>
   );
 };
 
