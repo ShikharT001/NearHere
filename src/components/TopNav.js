@@ -39,7 +39,10 @@ export default function TopNav() {
           />
         </svg>
       </IconWrapper>
-        <Text style={styles.text}>Near Here</Text>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>Near</Text>
+          <Text style={styles.logoAccent}>-here</Text>
+        </View>
 
       {/* RIGHT ICON */}
       <IconWrapper onPress={() => navigation.navigate('Message')}>
@@ -63,6 +66,23 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'transparent',
     zIndex: 1000,
+  },
+    logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+  },
+    logoText: { 
+    fontSize: 30, 
+    fontWeight: '900', 
+    color: '#1a1a1a',
+    letterSpacing: -0.5,
+  },
+  
+  logoAccent: {
+    fontSize: 30,
+    fontWeight: '400',
+    color: '#E91E63',
+    fontStyle: 'italic',
   },
   text: {
     fontFamily: 'Urbanist-Regular',

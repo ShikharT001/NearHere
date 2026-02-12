@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Dimensions,
   Animated,
+   ScrollView 
 } from 'react-native';
 import Svg, { Path, Defs, LinearGradient as SvgGradient, Stop } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -102,6 +103,7 @@ export default function MatchScreen() {
 
   return (
     <View style={styles.container}>
+       <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
       {/* Decorative background elements */}
       <View style={styles.backgroundCircle1} />
       <View style={styles.backgroundCircle2} />
@@ -240,6 +242,7 @@ export default function MatchScreen() {
         </View>
         
       </SafeAreaView>
+        </ScrollView>
     </View>
   );
 }

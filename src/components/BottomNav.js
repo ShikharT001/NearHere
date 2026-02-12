@@ -121,11 +121,11 @@ const styles = StyleSheet.create({
 
   iconContainer: {
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingVertical: 2,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    minWidth: 70,
+    minWidth: 75,
   },
 
   iconContainerActive: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontSize: 10,
+    fontSize: 13,
     fontWeight: '600',
     marginTop: 4,
   },
